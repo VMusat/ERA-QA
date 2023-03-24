@@ -1,0 +1,13 @@
+In what country is the station of Guadalajara?
+
+What are the tracks from Atocha?
+
+What is the network coverage of the track: 110020-01?
+
+What is the network coverage of the track: T600473-DP1?
+
+What is the wheelSetGauge of the track 110020-01?
+
+3572_DE0FOHF_single-track_DE0FWOI tiene label single-track, como otras tantas, su hasAbstraction contiene su nombre
+
+740-00_2002_CZ33467_1_CZ33437 tiene label 1, como otras tantas, su hasAbstraction contiene su nombre
