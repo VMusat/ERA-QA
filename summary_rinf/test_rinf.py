@@ -32,7 +32,7 @@ def get_answer():
     pprint.pprint(answers)
 
 
-query = "What is the Network Coverage of the track 1670_BEMHLG_1395-1_BEMH?"
+query = "What is the network coverage of the track 1670_BEMHLG_1395-1_BEMH?"
 
 # get_resources()
 get_answer()

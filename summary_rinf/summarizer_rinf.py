@@ -1,10 +1,12 @@
 import logging
 import requests
 import MuHeQA.application.cache as ch
-import MuHeQA.application.summary.keywords.concept as cp
-import MuHeQA.application.summary.keywords.discovery as kw
+import concept_rinf as cp
+import discovery_rinf as kw
 import verbalizer_rinf as vb
 import resources_rinf as rf
+
+
 # import MuHeQA.application.summary.resources.wikipedia as kg_wikipedia
 # import MuHeQA.application.summary.resources.dbpedia as kg_dbpedia
 # import MuHeQA.application.summary.resources.d4c as db_d4c
@@ -13,7 +15,7 @@ import resources_rinf as rf
 class Summarizer:
 
     def __init__(self):
-        self.cache = ch.Cache("Summarizer")
+        # self.cache = ch.Cache("Summarizer")
         self.logger = logging.getLogger('muheqa')
         self.logger.debug("initializing Summarizer ...")
 
@@ -30,8 +32,8 @@ class Summarizer:
                       by_properties=True, by_description=True):
         key = query + str(max_resources) + str(wikipedia) + str(dbpedia) + str(d4c) + str(by_name) + str(
             by_properties) + str(by_description)
-        if (self.cache.exists(key)):
-            return self.cache.get(key)
+        # if (self.cache.exists(key)):
+        #     return self.cache.get(key)
 
         # Create Summary
         sentences = []
@@ -52,5 +54,5 @@ class Summarizer:
             self.logger.debug("rinf sentences:" + str(rinf_sentences))
             sentences.extend(rinf_sentences)
 
-        self.cache.set(key, sentences)
+        # self.cache.set(key, sentences)
         return sentences

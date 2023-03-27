@@ -1,6 +1,6 @@
 import logging
 import MuHeQA.application.cache as ch
-import MuHeQA.application.summary.resources.graph as kg_graph
+import graph_rinf as kg_graph
 import MuHeQA.application.summary.resources.wikipedia as kg_wikipedia
 import MuHeQA.application.summary.resources.dbpedia as kg_dbpedia
 import MuHeQA.application.summary.resources.d4c as db_d4c
@@ -9,7 +9,7 @@ import MuHeQA.application.summary.resources.d4c as db_d4c
 class Verbalizer:
 
     def __init__(self):
-        self.cache = ch.Cache("Verbalizer")
+        # self.cache = ch.Cache("Verbalizer")
         self.logger = logging.getLogger('muheqa')
         self.logger.debug("initializing Verbalizer ...")
         self.graph = kg_graph.Graph()
@@ -49,8 +49,8 @@ class Verbalizer:
 
                 # bw_values = kg.get_backward_property_value(resource['id'],p['id'])
                 # if (len(bw_values)>0):
-                #	t = self.property_to_text(resource['label'],p['text'],[o['value'] for o in bw_values])
-                #	sentences.append(t)
+                # t = self.property_to_text(resource['label'],p['text'],[o['value'] for o in bw_values])
+                # sentences.append(t)
         return sentences
 
     def db_to_text(self, db, query, keywords, concepts, max_texts=5):

@@ -47,16 +47,18 @@ class AuxFunc:
             if solution['b_lab'] is not None:
                 label = str(solution['b_lab'].value)
             else:
-                try:
-                    label = str(solution['b'].value).split("/")[-3]
-                except IndexError:
-                    label = str(solution['b'].value).split("/")[-1]
+                # try:
+                #     label = str(solution['b'].value).split("/")[-3:]
+                #     label = "/".join(map(str, label))
+                # except IndexError:
+                label = str(solution['b'].value).split("/")[-1]
 
             prop_list[solution['prop'].value].setdefault('values', []).append({solution['b'].value: label})
 
         if prop_list.__contains__('http://www.w3.org/2000/01/rdf-schema#label'):
             prop_list.pop("http://www.w3.org/2000/01/rdf-schema#label")
 
+        # pprint.pprint(prop_list)
         return prop_list
 
 
