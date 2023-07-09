@@ -25,7 +25,6 @@ class Concept:
 
         # make sentence
         sentence = Sentence(text)
-        print(sentence)
         # iterate over the tokens and modify their text if they contain an underscore
         new_tokens = []
         previous = ""
@@ -37,11 +36,9 @@ class Concept:
                 new_token = Token(semitoken + token.text)
                 new_tokens.append(new_token)
                 previous = new_token.text
-                # previous, semitoken = "", ""
                 next_flag = False
             else:
                 if "_" in token.text:
-                    # create a new token with the desired text
                     next_flag = True
                     new_tokens.pop()
                     semitoken = previous + "_"

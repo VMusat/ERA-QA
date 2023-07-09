@@ -18,3 +18,4 @@ with open("rinferatv-aggregate-202210261513.nq", "r", encoding="utf8") as input:
             else:
                 print("Error found at line: "+str(n)+" // "+str(line))
             n = n+1
+

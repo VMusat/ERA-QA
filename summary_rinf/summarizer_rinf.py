@@ -45,9 +45,9 @@ class Summarizer:
             return sentences
 
         self.logger.debug("keywords: " + str(keywords))
-        keys = keywords['entities']
-        if (len(keys) == 0):
-            keys = keywords['concepts']
+        # keys = keywords['entities']
+        # if (len(keys) == 0):
+        keys = keywords['concepts']
         for kw in keys:
             rinf_sentences = self.verbalizer.kg_to_text(self.rinf, query, kw, max_resources, by_name,
                                                         by_properties, by_description)

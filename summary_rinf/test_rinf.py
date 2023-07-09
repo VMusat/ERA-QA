@@ -7,35 +7,44 @@ import MuHeQA.application.evidence.discoverer as ds
 import MuHeQA.application.answer.composer as cp
 
 
-def get_resources():
-    discovery = dc.Discovery()
-    resource = rrf.Resources()
+class Tester:
 
-    keys = discovery.get_keywords(query)
-    print(keys)
-    for ent in keys['concepts']:
-        pprint.pprint(resource.find_resources(ent))
+    def get_resources(self, query):
+        discovery = dc.Discovery()
+        resource = rrf.Resources()
+
+        keys = discovery.get_keywords(query)
+        resources_list = []
+        print(keys)
+        for ent in keys['concepts']:
+            candidates = resource.find_resources(ent)
+            for cand in candidates:
+                resources_list.append(cand['id'])
+                print(cand['id'])
+            pprint.pprint(resource.find_resources(ent))
+        return resources_list
+
+    def get_answer(self, query):
+        discoverer = ds.Discoverer()
+        composer = cp.Composer()
+        summarizer = sr.Summarizer()
+
+        sentences = summarizer.get_sentences(query)
+        # pprint.pprint(sentences)
+
+        evidences = discoverer.get_evidences(query, sentences, max=5)
+
+        answers = composer.get_answers(query, evidences, max=5)
+
+        # pprint.pprint(answers)
+        return answers
 
 
-def get_answer():
-    discoverer = ds.Discoverer()
-    composer = cp.Composer()
-    summarizer = sr.Summarizer()
+t = Tester()
+q = "What is the lineReference of the OperationalPoint Bif de La Pallice (La Rochelle)?"
 
-    sentences = summarizer.get_sentences(query)
-    print(sentences)
-
-    evidences = discoverer.get_evidences(query, sentences, max=5)
-
-    answers = composer.get_answers(query, evidences, max=5)
-
-    pprint.pprint(answers)
-
-
-query = "What is the network coverage of the track 1670_BEMHLG_1395-1_BEMH?"
-
-# get_resources()
-get_answer()
-
+# Comment one line or the other
+# pprint.pprint(t.get_resources(q))
+pprint.pprint(t.get_answer(q))
 
 

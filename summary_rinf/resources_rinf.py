@@ -25,7 +25,7 @@ class Resources:
             result.append({'id': key, 'value': value['label']})
         return result
 
-    def find_resources(self, label, max_candidates=3, ignore_net=True):
+    def find_resources(self, label, max_candidates=4, ignore_net=True):
         conn = ec.Connection()
         candidates = []
         elastic_result = conn.generate_query(label)
